@@ -1,176 +1,879 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bailey's Lawncare LLC</title>
   <style>
+    /* Reset and Base Styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
-    html, body {
-      height: 100%;
-      width: 100%;
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      overflow: hidden;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    
     body {
-      overflow-y: auto;
-      scroll-snap-type: y mandatory;
-      -webkit-overflow-scrolling: touch;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f8f8;
     }
-
-    .section {
-      scroll-snap-align: start;
-      width: 100vw;
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    a {
+      text-decoration: none;
+      color: #2e7d32;
+    }
+    
+    /* Container for all content */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Header Styles */
+    header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 15px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    
+    .logo a {
+      color: white;
+    }
+    
+    /* Mobile Navigation */
+    .mobile-nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav ul li {
+      margin-left: 20px;
+    }
+    
+    nav ul li a {
+      color: white;
+      font-weight: 500;
+      transition: opacity 0.3s;
+    }
+    
+    nav ul li a:hover {
+      opacity: 0.8;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/1400x800') no-repeat center center/cover;
       height: 100vh;
       display: flex;
-      justify-content: center;
       align-items: center;
-      background-color: #000;
-      position: relative;
+      text-align: center;
+      color: white;
+      margin-top: 60px;
+    }
+    
+    .hero-content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+    
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .button {
+      display: inline-block;
+      background-color: #2e7d32;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    
+    .button:hover {
+      background-color: #1b5e20;
+    }
+    
+    /* Services Section */
+    .services {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-header h2 {
+      font-size: 2rem;
+      color: #2e7d32;
+      margin-bottom: 15px;
+    }
+    
+    .section-header p {
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #666;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .service-card {
+      background-color: #f9f9f9;
+      border-radius: 5px;
+      padding: 30px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .service-icon {
+      font-size: 2.5rem;
+      color: #2e7d32;
+      margin-bottom: 20px;
+    }
+    
+    .service-card h3 {
+      margin-bottom: 15px;
+      color: #2e7d32;
+    }
+    
+    /* About Section */
+    .about {
+      padding: 80px 0;
+      background-color: #f5f5f5;
+    }
+    
+    .about-content {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+      border-radius: 5px;
       overflow: hidden;
     }
-
-    .svg-container {
+    
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .about-text h2 {
+      color: #2e7d32;
+      margin-bottom: 20px;
+    }
+    
+    .about-text p {
+      margin-bottom: 15px;
+    }
+    
+    /* Gallery Section */
+    .gallery {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .gallery-item {
+      position: relative;
+      border-radius: 5px;
+      overflow: hidden;
+      height: 250px;
+      cursor: pointer;
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    
+    .gallery-caption {
       position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-caption {
+      opacity: 1;
+    }
+    
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      display: flex;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
       justify-content: center;
       align-items: center;
+      padding: 30px;
     }
-
-    .svg-container object {
-      width: 100%;
-      height: 100%;
+    
+    .lightbox.active {
+      display: flex;
+    }
+    
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 80vh;
+    }
+    
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 80vh;
       object-fit: contain;
     }
-
-    /* For landscape orientation SVGs */
-    @media (orientation: portrait) {
-      .svg-container object {
-        width: 100vw;
-        height: auto;
-        max-height: 100vh;
-      }
-    }
-
-    @media (orientation: landscape) {
-      .svg-container object {
-        width: auto;
-        height: 100vh;
-        max-width: 100vw;
-      }
-    }
-
-    /* Invisible button on SVG 2 - adjusted for better positioning */
-    #svg-2-link {
+    
+    .lightbox-close {
       position: absolute;
-      bottom: 25%;
-      left: 50%;
-      width: 220px;
-      height: 50px;
-      transform: translateX(-50%);
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 30px;
       cursor: pointer;
-      z-index: 10;
-      background: rgba(255, 255, 255, 0.1); /* Slightly visible for debugging */
     }
-
+    
+    .lightbox-caption {
+      color: white;
+      text-align: center;
+      margin-top: 10px;
+    }
+    
+    /* Testimonials */
+    .testimonials {
+      padding: 80px 0;
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+    
+    .testimonial-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .testimonial {
+      padding: 30px;
+      margin-bottom: 30px;
+      border-radius: 5px;
+      background-color: white;
+    }
+    
+    .testimonial p {
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+    
+    .testimonial-author {
+      font-weight: bold;
+      color: #2e7d32;
+    }
+    
+    /* Contact Section */
+    .contact {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    
+    .contact-info {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .contact-info h3 {
+      color: #2e7d32;
+      margin-bottom: 20px;
+    }
+    
+    .contact-info p {
+      margin-bottom: 10px;
+    }
+    
+    .contact-form {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: inherit;
+    }
+    
+    .form-group textarea {
+      height: 150px;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #1b5e20;
+      color: white;
+      padding: 40px 0 20px;
+    }
+    
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+    
+    .footer-column {
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .footer-column h3 {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column ul li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-column ul li a {
+      color: #c8e6c9;
+      transition: color 0.3s;
+    }
+    
+    .footer-column ul li a:hover {
+      color: white;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.9rem;
+    }
+    
+    /* Mobile Responsiveness */
     @media (max-width: 768px) {
-      #svg-2-link {
-        width: 180px;
-        height: 40px;
+      .mobile-nav-toggle {
+        display: block;
       }
+      
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #2e7d32;
+        padding: 20px;
+        display: none;
+      }
+      
+      nav.active {
+        display: block;
+      }
+      
+      nav ul {
+        flex-direction: column;
+      }
+      
+      nav ul li {
+        margin: 0 0 15px 0;
+      }
+      
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      
+      .hero-content p {
+        font-size: 1rem;
+      }
+      
+      .section-header h2 {
+        font-size: 1.8rem;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+      
+      .gallery-item {
+        height: 150px;
+      }
+    }
+    
+    /* Form success/error messages */
+    .form-message {
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 4px;
+      display: none;
+    }
+    
+    .form-message.success {
+      background-color: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    
+    .form-message.error {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    
+    /* Icon */
+    .icon {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      stroke-width: 0;
+      stroke: currentColor;
+      fill: currentColor;
     }
   </style>
 </head>
 <body>
-
-  <!-- Section 1 -->
-  <div class="section" id="section-1">
-    <div class="svg-container">
-      <object data="1.svg" type="image/svg+xml" title="Bailey's Lawncare Introduction"></object>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <a href="#hero">Bailey's Lawncare</a>
+      </div>
+      <button class="mobile-nav-toggle">☰</button>
+      <nav>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <!-- Section 2 (with clickable button) -->
-  <div class="section" id="section-2">
-    <div class="svg-container">
-      <object data="2.svg" type="image/svg+xml" title="Bailey's Lawncare Services"></object>
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Professional Lawn &amp; Landscape Services</h1>
+        <p>Transform your property with our expert lawn care and landscaping solutions. Serving local communities with pride and dedication.</p>
+        <a href="#contact" class="button">Get a Free Quote</a>
+      </div>
     </div>
-    <a href="#section-6" id="svg-2-link" aria-label="Go to Contact"></a>
-  </div>
+  </section>
 
-  <!-- Section 3 -->
-  <div class="section" id="section-3">
-    <div class="svg-container">
-      <object data="3.svg" type="image/svg+xml" title="Bailey's Lawncare About"></object>
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Services</h2>
+        <p>We offer comprehensive lawn care and landscaping services to keep your property looking its best all year round.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">✂️</div>
+          <h3>Lawn Mowing</h3>
+          <p>Regular professional mowing to keep your lawn healthy and looking its best throughout the growing season.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🌱</div>
+          <h3>Fertilization</h3>
+          <p>Custom fertilization programs to provide your lawn with the nutrients it needs for optimal growth and health.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🌿</div>
+          <h3>Landscaping</h3>
+          <p>Professional landscape design and installation to enhance the beauty and value of your property.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🍂</div>
+          <h3>Fall Cleanup</h3>
+          <p>Comprehensive fall cleanup services to prepare your property for winter and ensure a healthy spring growth.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🚿</div>
+          <h3>Irrigation</h3>
+          <p>Installation and maintenance of irrigation systems to keep your lawn and gardens properly watered.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">❄️</div>
+          <h3>Snow Removal</h3>
+          <p>Reliable snow removal services to keep your driveways and walkways clear and safe during winter months.</p>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Section 4 -->
-  <div class="section" id="section-4">
-    <div class="svg-container">
-      <object data="4.svg" type="image/svg+xml" title="Bailey's Lawncare Portfolio"></object>
+  <!-- Gallery Section -->
+  <section id="gallery" class="gallery">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our Work Gallery</h2>
+        <p>Browse through photos of our recent projects and transformations. See the quality of our work firsthand.</p>
+      </div>
+      
+      <!-- Gallery Grid - This is where you'll add all your project images -->
+      <div class="gallery-grid">
+        <!-- Gallery Item 1 -->
+        <div class="gallery-item">
+          <img src="images/gallery/lawn1.jpg" alt="Freshly mowed lawn">
+          <div class="gallery-caption">Residential Lawn Maintenance</div>
+        </div>
+        
+        <!-- Gallery Item 2 -->
+        <div class="gallery-item">
+          <img src="images/gallery/lawn2.jpg" alt="Landscaped garden">
+          <div class="gallery-caption">Garden Landscaping Project</div>
+        </div>
+        
+        <!-- Gallery Item 3 -->
+        <div class="gallery-item">
+          <img src="images/gallery/lawn3.jpg" alt="Trimmed hedges">
+          <div class="gallery-caption">Hedge Trimming Service</div>
+        </div>
+        
+        <!-- Gallery Item 4 -->
+        <div class="gallery-item">
+          <img src="images/gallery/lawn4.jpg" alt="Commercial property">
+          <div class="gallery-caption">Commercial Property Maintenance</div>
+        </div>
+        
+        <!-- Gallery Item 5 -->
+        <div class="gallery-item">
+          <img src="images/gallery/lawn5.jpg" alt="Backyard transformation">
+          <div class="gallery-caption">Backyard Transformation</div>
+        </div>
+        
+        <!-- Gallery Item 6 -->
+        <div class="gallery-item">
+          <img src="images/gallery/lawn6.jpg" alt="Fall cleanup">
+          <div class="gallery-caption">Fall Cleanup Project</div>
+        </div>
+        
+        <!-- Gallery Item 7 -->
+        <div class="gallery-item">
+          <img src="images/gallery/lawn7.jpg" alt="Spring lawn care">
+          <div class="gallery-caption">Spring Lawn Rejuvenation</div>
+        </div>
+        
+        <!-- Gallery Item 8 -->
+        <div class="gallery-item">
+          <img src="images/gallery/lawn8.jpg" alt="Garden design">
+          <div class="gallery-caption">Custom Garden Design</div>
+        </div>
+      </div>
     </div>
-  </div>
+    
+    <!-- Lightbox for Gallery -->
+    <div class="lightbox">
+      <span class="lightbox-close">&times;</span>
+      <div class="lightbox-content">
+        <img src="" alt="">
+        <div class="lightbox-caption"></div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Section 5 -->
-  <div class="section" id="section-5">
-    <div class="svg-container">
-      <object data="5.svg" type="image/svg+xml" title="Bailey's Lawncare Testimonials"></object>
+  <!-- About Section -->
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-image">
+          <img src="images/about-team.jpg" alt="Bailey's Lawncare Team">
+        </div>
+        <div class="about-text">
+          <h2>About Bailey's Lawncare</h2>
+          <p>Founded with a passion for creating and maintaining beautiful outdoor spaces, Bailey's Lawncare LLC has been serving the community for over 5 years.</p>
+          <p>Our team of skilled professionals takes pride in delivering exceptional service and results that exceed our customers' expectations. We use only the highest quality products and equipment to ensure your property looks its best.</p>
+          <p>At Bailey's Lawncare, we believe in building lasting relationships with our clients through honest work, fair pricing, and reliable service. Your satisfaction is our top priority.</p>
+          <a href="#contact" class="button">Contact Us</a>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Section 6 (Contact Page) -->
-  <div class="section" id="section-6">
-    <div class="svg-container">
-      <object data="6.svg" type="image/svg+xml" title="Bailey's Lawncare Contact"></object>
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <h2>What Our Clients Say</h2>
+        <p>Don't just take our word for it. Here's what some of our satisfied customers have to say about our services.</p>
+      </div>
+      <div class="testimonial-container">
+        <div class="testimonial">
+          <p>"Bailey's Lawncare has been maintaining our property for two years now, and we couldn't be happier with their service. They're always on time, professional, and our lawn has never looked better!"</p>
+          <div class="testimonial-author">- John D., Homeowner</div>
+        </div>
+        <div class="testimonial">
+          <p>"I've tried several lawn care companies over the years, but none compare to Bailey's. Their attention to detail and customer service is outstanding. I highly recommend them to anyone looking for quality lawn care."</p>
+          <div class="testimonial-author">- Sarah M., Property Manager</div>
+        </div>
+        <div class="testimonial">
+          <p>"The team at Bailey's Lawncare completely transformed our backyard. Their landscaping design was exactly what we wanted, and the installation was done quickly and professionally. We love our new outdoor space!"</p>
+          <div class="testimonial-author">- Michael & Lisa T., Homeowners</div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-header">
+        <h2>Contact Us</h2>
+        <p>Ready to transform your property? Get in touch with us for a free quote or to learn more about our services.</p>
+      </div>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Our Information</h3>
+          <p><strong>Phone:</strong> (573) 268-9169</p>
+          <p><strong>Email:</strong> info@semolawns.com</p>
+          <p><strong>Hours:</strong> Monday - Friday: 8am - 6pm<br>Saturday: 9am - 3pm<br>Sunday: Closed</p>
+        </div>
+        <div class="contact-form">
+          <form id="contactForm" method="POST" action="mailto:info@baileyslawncare.com" enctype="text/plain">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+              <label for="service">Service Interested In</label>
+              <input type="text" id="service" name="service">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="button">Send Message</button>
+            <div id="formSuccess" class="form-message success">Thank you for your message! We will get back to you shortly.</div>
+            <div id="formError" class="form-message error">Something went wrong. Please try again or call us directly.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-column">
+          <h3>Bailey's Lawncare</h3>
+          <p>Professional lawn care and landscaping services you can trust.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Services</h3>
+          <ul>
+            <li><a href="#services">Lawn Mowing</a></li>
+            <li><a href="#services">Fertilization</a></li>
+            <li><a href="#services">Landscaping</a></li>
+            <li><a href="#services">Fall Cleanup</a></li>
+            <li><a href="#services">Snow Removal</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2025 Bailey's Lawncare LLC. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
 
   <script>
-    // Optional: This script ensures SVGs are properly scaled after loading
+    // Mobile Navigation Toggle
     document.addEventListener('DOMContentLoaded', function() {
-      const svgObjects = document.querySelectorAll('.svg-container object');
+      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      const nav = document.querySelector('nav');
       
-      svgObjects.forEach(obj => {
-        obj.onload = function() {
-          try {
-            // Access the SVG document
-            const svgDoc = obj.contentDocument;
-            if (svgDoc) {
-              const svg = svgDoc.querySelector('svg');
-              if (svg) {
-                // Ensure SVG has proper responsive attributes
-                svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
-                if (!svg.hasAttribute('viewBox') && svg.hasAttribute('width') && svg.hasAttribute('height')) {
-                  // Create viewBox if missing
-                  const width = parseFloat(svg.getAttribute('width'));
-                  const height = parseFloat(svg.getAttribute('height'));
-                  svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-                }
-                // Remove fixed dimensions to allow CSS to control size
-                svg.removeAttribute('width');
-                svg.removeAttribute('height');
-              }
-            }
-          } catch (e) {
-            console.log('SVG adjustment error:', e);
+      mobileNavToggle.addEventListener('click', function() {
+        nav.classList.toggle('active');
+      });
+      
+      // Close mobile menu when clicking a nav link
+      const navLinks = document.querySelectorAll('nav a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          nav.classList.remove('active');
+        });
+      });
+      
+      // Image gallery lightbox functionality
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      const lightbox = document.querySelector('.lightbox');
+      const lightboxImg = lightbox.querySelector('img');
+      const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+      const lightboxClose = lightbox.querySelector('.lightbox-close');
+      
+      galleryItems.forEach(item => {
+        item.addEventListener('click', function() {
+          const imgSrc = this.querySelector('img').getAttribute('src');
+          const caption = this.querySelector('.gallery-caption').textContent;
+          
+          lightboxImg.setAttribute('src', imgSrc);
+          lightboxCaption.textContent = caption;
+          lightbox.classList.add('active');
+        });
+      });
+      
+      lightboxClose.addEventListener('click', function() {
+        lightbox.classList.remove('active');
+      });
+      
+      // Close lightbox when clicking outside the image
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+          lightbox.classList.remove('active');
+        }
+      });
+      
+      // Contact form handling
+      const contactForm = document.getElementById('contactForm');
+      const formSuccess = document.getElementById('formSuccess');
+      const formError = document.getElementById('formError');
+      
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          // The form will try to submit to the mailto: action
+          
+          // Show success message (this is just for user feedback, actual email handling is done by the mailto: protocol)
+          formSuccess.style.display = 'block';
+          
+          // Hide success message after 5 seconds
+          setTimeout(() => {
+            formSuccess.style.display = 'none';
+          }, 5000);
+        });
+      }
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 70, // Offset for fixed header
+              behavior: 'smooth'
+            });
           }
-        };
+        });
       });
     });
   </script>
