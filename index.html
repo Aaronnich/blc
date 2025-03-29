@@ -14,7 +14,6 @@
     html, body {
       height: 100%;
       width: 100%;
-      overflow: hidden;
       font-family: Arial, sans-serif;
       background-color: #000;
     }
@@ -24,7 +23,7 @@
     }
 
     body {
-      overflow-y: scroll;
+      overflow-y: auto;
       scroll-snap-type: y mandatory;
       -webkit-overflow-scrolling: touch;
     }
@@ -32,40 +31,38 @@
     .section {
       scroll-snap-align: start;
       width: 100vw;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       background-color: #000;
       position: relative;
-      overflow: hidden;
     }
 
     .section img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
     }
 
     /* Invisible button on SVG 2 */
     #svg-2-link {
       position: absolute;
-      top: 60%; /* adjust this depending on your layout */
-      left: 62%;
-      width: 220px; /* adjust button size */
+      top: 60vh;
+      left: 50vw;
+      width: 220px;
       height: 50px;
       transform: translate(-50%, -50%);
       cursor: pointer;
       z-index: 10;
-      background: rgba(255, 255, 255, 0); /* fully transparent */
+      background: rgba(255, 255, 255, 0);
     }
 
     @media (max-width: 768px) {
       #svg-2-link {
-        top: 80%;
-        left: 50%;
-        width: 200px;
-        height: 50px;
+        top: 75vh;
+        width: 180px;
+        height: 40px;
       }
     }
   </style>
