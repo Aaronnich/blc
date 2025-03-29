@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bailey's Lawncare LLC</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .section {
+      scroll-snap-align: start;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Invisible button on SVG 2 */
+    #svg-2-link {
+      position: absolute;
+      top: 60%; /* adjust this depending on your layout */
+      left: 62%;
+      width: 220px; /* adjust button size */
+      height: 50px;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0); /* fully transparent */
+    }
+
+    @media (max-width: 768px) {
+      #svg-2-link {
+        top: 80%;
+        left: 50%;
+        width: 200px;
+        height: 50px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Section 1 -->
+  <div class="section" id="section-1">
+    <img src="1.svg" alt="Section 1">
+  </div>
+
+  <!-- Section 2 (with clickable button) -->
+  <div class="section" id="section-2">
+    <img src="2.svg" alt="Section 2">
+    <a href="#section-6" id="svg-2-link" aria-label="Go to Contact"></a>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="section" id="section-3">
+    <img src="3.svg" alt="Section 3">
+  </div>
+
+  <!-- Section 4 -->
+  <div class="section" id="section-4">
+    <img src="4.svg" alt="Section 4">
+  </div>
+
+  <!-- Section 5 -->
+  <div class="section" id="section-5">
+    <img src="5.svg" alt="Section 5">
+  </div>
+
+  <!-- Section 6 (Contact Page) -->
+  <div class="section" id="section-6">
+    <img src="6.svg" alt="Contact Section">
+  </div>
+
+</body>
+</html>
