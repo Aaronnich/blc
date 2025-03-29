@@ -17,6 +17,15 @@
       line-height: 1.6;
       color: #333;
       background-color: #f8f8f8;
+      scroll-snap-type: y mandatory; /* Add snap scrolling */
+      overflow-y: scroll;
+      height: 100vh;
+    }
+    
+    /* Make sections snap when scrolled */
+    section {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
     }
     
     img {
@@ -139,6 +148,10 @@
     .services {
       padding: 80px 0;
       background-color: white;
+      min-height: 100vh; /* Make sections fill the viewport */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     
     .section-header {
@@ -189,44 +202,14 @@
       color: #2e7d32;
     }
     
-    /* About Section */
-    .about {
-      padding: 80px 0;
-      background-color: #f5f5f5;
-    }
-    
-    .about-content {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-    
-    .about-image {
-      flex: 1;
-      min-width: 300px;
-      border-radius: 5px;
-      overflow: hidden;
-    }
-    
-    .about-text {
-      flex: 1;
-      min-width: 300px;
-    }
-    
-    .about-text h2 {
-      color: #2e7d32;
-      margin-bottom: 20px;
-    }
-    
-    .about-text p {
-      margin-bottom: 15px;
-    }
-    
     /* Gallery Section */
     .gallery {
       padding: 80px 0;
       background-color: white;
+      min-height: 100vh; /* Make sections fill the viewport */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     
     .gallery-grid {
@@ -321,6 +304,10 @@
       padding: 80px 0;
       background-color: #f5f5f5;
       text-align: center;
+      min-height: 100vh; /* Make sections fill the viewport */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     
     .testimonial-container {
@@ -349,6 +336,10 @@
     .contact {
       padding: 80px 0;
       background-color: white;
+      min-height: 100vh; /* Make sections fill the viewport */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     
     .contact-container {
@@ -404,6 +395,7 @@
       background-color: #1b5e20;
       color: white;
       padding: 40px 0 20px;
+      scroll-snap-align: start;
     }
     
     .footer-container {
@@ -539,7 +531,6 @@
         <ul>
           <li><a href="#services">Services</a></li>
           <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#about">About</a></li>
           <li><a href="#testimonials">Testimonials</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -548,15 +539,15 @@
   </header>
 
   <!-- Hero Section -->
-<section id="hero" class="hero" style="background-image: url('images/gallery/lawn5.jpg'); background-size: cover; background-position: center;">
-  <div class="container">
-    <div class="hero-content">
-      <h1>Professional Lawn &amp; Landscape Services</h1>
-      <p>Transform your property with our expert lawn care and landscaping solutions. Serving local communities with pride and dedication.</p>
-      <a href="#contact" class="button">Get a Free Quote</a>
+  <section id="hero" class="hero" style="background-image: url('images/gallery/lawn5.jpg'); background-size: cover; background-position: center;">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Professional Lawn &amp; Landscape Services</h1>
+        <p>Transform your property with our expert lawn care and landscaping solutions. Serving local communities with pride and dedication.</p>
+        <a href="#contact" class="button">Get a Free Quote</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- Services Section -->
   <section id="services" class="services">
@@ -612,50 +603,50 @@
       <div class="gallery-grid">
         <!-- Gallery Item 1 -->
         <div class="gallery-item">
-          <img src="images/gallery/lawn1.jpg" alt="Freshly mowed lawn">
-          <div class="gallery-caption">Residential Lawn Maintenance</div>
+          <img src="images/gallery/lawn1.jpg" alt="Terre du Lac">
+          <div class="gallery-caption"></div>
         </div>
         
         <!-- Gallery Item 2 -->
         <div class="gallery-item">
-          <img src="images/gallery/lawn2.jpg" alt="Landscaped garden">
-          <div class="gallery-caption">Garden Landscaping Project</div>
+          <img src="images/gallery/lawn2.jpg" alt="Terre du Lac">
+          <div class="gallery-caption"></div>
         </div>
         
         <!-- Gallery Item 3 -->
         <div class="gallery-item">
-          <img src="images/gallery/lawn3.jpg" alt="Trimmed hedges">
-          <div class="gallery-caption">Hedge Trimming Service</div>
+          <img src="images/gallery/lawn3.jpg" alt="Terre du Lac">
+          <div class="gallery-caption"></div>
         </div>
         
         <!-- Gallery Item 4 -->
         <div class="gallery-item">
-          <img src="images/gallery/lawn4.jpg" alt="Commercial property">
-          <div class="gallery-caption">Commercial Property Maintenance</div>
+          <img src="images/gallery/lawn4.jpg" alt="Terre du Lac">
+          <div class="gallery-caption"></div>
         </div>
         
         <!-- Gallery Item 5 -->
         <div class="gallery-item">
-          <img src="images/gallery/lawn5.jpg" alt="Backyard transformation">
-          <div class="gallery-caption">Backyard Transformation</div>
+          <img src="images/gallery/lawn5.jpg" alt="Terre du Lac">
+          <div class="gallery-caption"></div>
         </div>
         
         <!-- Gallery Item 6 -->
         <div class="gallery-item">
-          <img src="images/gallery/lawn6.jpg" alt="Fall cleanup">
-          <div class="gallery-caption">Fall Cleanup Project</div>
+          <img src="images/gallery/lawn6.jpg" alt="Terre du Lac">
+          <div class="gallery-caption"></div>
         </div>
         
         <!-- Gallery Item 7 -->
         <div class="gallery-item">
-          <img src="images/gallery/lawn7.jpg" alt="Spring lawn care">
-          <div class="gallery-caption">Spring Lawn Rejuvenation</div>
+          <img src="images/gallery/lawn7.jpg" alt="Terre du Lac">
+          <div class="gallery-caption"></div>
         </div>
         
         <!-- Gallery Item 8 -->
         <div class="gallery-item">
-          <img src="images/gallery/lawn8.jpg" alt="Garden design">
-          <div class="gallery-caption">Custom Garden Design</div>
+          <img src="images/gallery/lawn8.jpg" alt="Terre du Lac">
+          <div class="gallery-caption"></div>
         </div>
       </div>
     </div>
@@ -666,24 +657,6 @@
       <div class="lightbox-content">
         <img src="" alt="">
         <div class="lightbox-caption"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="about">
-    <div class="container">
-      <div class="about-content">
-        <div class="about-image">
-          <img src="images/about-team.jpg" alt="Bailey's Lawncare Team">
-        </div>
-        <div class="about-text">
-          <h2>About Bailey's Lawncare</h2>
-          <p>Founded with a passion for creating and maintaining beautiful outdoor spaces, Bailey's Lawncare LLC has been serving the community for over 5 years.</p>
-          <p>Our team of skilled professionals takes pride in delivering exceptional service and results that exceed our customers' expectations. We use only the highest quality products and equipment to ensure your property looks its best.</p>
-          <p>At Bailey's Lawncare, we believe in building lasting relationships with our clients through honest work, fair pricing, and reliable service. Your satisfaction is our top priority.</p>
-          <a href="#contact" class="button">Contact Us</a>
-        </div>
       </div>
     </div>
   </section>
@@ -727,7 +700,7 @@
           <p><strong>Hours:</strong> Monday - Friday: 8am - 6pm<br>Saturday: 9am - 3pm<br>Sunday: Closed</p>
         </div>
         <div class="contact-form">
-          <form id="contactForm" method="POST" action="mailto:info@baileyslawncare.com" enctype="text/plain">
+          <form id="contactForm" method="POST" action="mailto:info@semolawns.com" enctype="text/plain">
             <div class="form-group">
               <label for="name">Name</label>
               <input type="text" id="name" name="name" required>
@@ -771,7 +744,6 @@
             <li><a href="#hero">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#about">About</a></li>
             <li><a href="#testimonials">Testimonials</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
